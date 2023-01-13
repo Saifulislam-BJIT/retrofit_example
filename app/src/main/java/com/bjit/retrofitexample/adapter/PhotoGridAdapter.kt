@@ -21,8 +21,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bjit.retrofitexample.R
 import com.bjit.retrofitexample.databinding.GridViewItemBinding
 import com.bjit.retrofitexample.model.MarsPhoto
+import com.bumptech.glide.Glide
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -74,6 +76,11 @@ class PhotoGridAdapter :
      */
     override fun onBindViewHolder(holder: MarsPhotosViewHolder, position: Int) {
         val marsPhoto = getItem(position)
-        holder.bind(marsPhoto)
+//        holder.bind(marsPhoto)
+        Glide
+            .with(holder.itemView.context)
+            .load(marsPhoto.imgSrcUrl)
+            .placeholder(R.drawable.loading_animation)
+            .into(holder.itemView.findViewById(R.id.mars_image))
     }
 }

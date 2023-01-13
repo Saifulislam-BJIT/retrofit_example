@@ -1,6 +1,8 @@
-
 package com.bjit.retrofitexample.viewmodel
 
+import android.content.Context
+import android.net.ConnectivityManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -41,7 +43,6 @@ class OverviewViewModel : ViewModel() {
      * [MarsPhoto] [List] [LiveData].
      */
     private fun getMarsPhotos() {
-
         viewModelScope.launch {
             _status.value = MarsApiStatus.LOADING
             try {
